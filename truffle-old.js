@@ -5,7 +5,7 @@ module.exports = {
   networks: {
     development: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545/", 0, 50);
+        return new HDWalletProvider(mnemonic, "http://127.0.0.1:7545/", 0, 50);
       },
       network_id: '*',
       gas: 6721974
@@ -13,7 +13,13 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: "^0.5.0"
+      version: "^0.5.0", // A version or constraint - Ex. "^0.5.0"
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200   // Optimize for how many times you intend to run the code
+        }
+      }
     }
   }
 };
