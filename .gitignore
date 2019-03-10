@@ -46,6 +46,7 @@ truffle.js
 # Dependency directories
 node_modules/
 jspm_packages/
+src/client/node_modules/
 
 # Typescript v1 declaration files
 typings/
