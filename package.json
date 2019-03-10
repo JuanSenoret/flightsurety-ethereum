@@ -8,9 +8,11 @@
   "repository": "https://github.com/techbubble/flightsurety",
   "license": "MIT",
   "scripts": {
-    "test": "truffle test ./test/flightSurety.js",
+    "test-dapp": "truffle test ./test/flightSurety.js",
+    "test-oracles": "truffle test ./test/oracles.js",
     "dapp": "webpack-dev-server --mode development --config webpack.config.dapp.js",
     "dapp:prod": "webpack --mode production  --config webpack.config.dapp.js",
+    "dappReact": "cd src/client && npm start",
     "server": "rm -rf ./build/server && webpack --config webpack.config.server.js"
   },
   "author": "Juan Senoret <juansenoret@gmail.com>",
@@ -36,12 +38,12 @@
     "style-loader": "^0.23.1",
     "superstatic": "^6.0.4",
     "truffle": "^5.0.5",
-    "truffle-hdwallet-provider": "^1.0.4",
+    "truffle-hdwallet-provider": "^1.0.5",
     "web3": "^1.0.0-beta.46",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "webpack": "4.28.3",
+    "webpack-cli": "3.2.3",
+    "webpack-dev-server": "3.1.14",
+    "webpack-node-externals": "1.7.2"
   },
   "dependencies": {}
 }

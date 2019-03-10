@@ -2,6 +2,8 @@
 var FlightSuretyApp = artifacts.require("FlightSuretyApp");
 var FlightSuretyData = artifacts.require("FlightSuretyData");
 var BigNumber = require('bignumber.js');
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
 
 var Config = async function(accounts) {
     
@@ -18,7 +20,7 @@ var Config = async function(accounts) {
         "0xc257274276a4e539741ca11b590b9447b26a8051",
         "0x2f2899d6d35b1a48a4fbdc93a37a72f264a9fca7"
     ];*/
-    let testAddresses = [
+    const testAddresses = [
         "0xa0364ad44abF70977d51270c5EFe623019f7f310",
         "0xAa3135FD8e2C7A745C16be7Fd7d643369D671c1F",
         "0x41A0F9dBA165D93aD1F956C09e10b89fdc4E2215",
@@ -30,21 +32,60 @@ var Config = async function(accounts) {
         "0xF43B1C6a090230B98b1cd043D8C88E4A34F6a79e"
     ];
 
-
-    let owner = accounts[0];
-    let firstAirline = accounts[1];
-
-    let flightSuretyData = await FlightSuretyData.new();
-    let flightSuretyApp = await FlightSuretyApp.new();
+    const flightSuretyData = await FlightSuretyData.new();
+    const flightSuretyApp = await FlightSuretyApp.new(flightSuretyData.address);
 
     
     return {
-        owner: owner,
-        firstAirline: firstAirline,
+        owner: accounts[0],
+        newOwner: accounts[3],
+        airline1: accounts[0],
+        airline1Name: 'AdminAirline',
+        fakeOwner: accounts[2],
+        airline2: accounts[4],
+        airline2Name: 'Lufthansa',
+        airline3: accounts[5],
+        airline3Name: 'KLM',
+        airline4: accounts[6],
+        airline4Name: 'Iberia',
+        airline5: accounts[7],
+        airline5Name: 'British Airways',
+        flight1Airline2Code: 'LH027',
+        flight1Airline2CodeDeparture: 'Hamburg',
+        flight1Airline2CodeArrival: 'Frankfurt',
+        flight2Airline2Code: 'LH2075',
+        flight2Airline2CodeDeparture: 'Hamburg',
+        flight2Airline2CodeArrival: 'Munich',
+        flight1Airline3Code: 'KL0751',
+        flight1Airline3CodeDeparture: 'Amsterdam',
+        flight1Airline3CodeArrival: 'Guayaquil',
+        flight2Airline3Code: 'KL1223',
+        flight2Airline3CodeDeparture: 'Amsterdam',
+        flight2Airline3CodeArrival: 'Atlanta',
+        emptyAddress: 0,
+        passenger1: accounts[8],
+        passenger2: accounts[9],
+        insurancePaidEnough: web3.utils.toWei('0.0001', "ether"),
+        insurancePaidNotEnough: web3.utils.toWei('0.00001', "ether"),
+        insuranceWithdraw: web3.utils.toWei('0.00015', "ether"),
+        initOperational: true,
+        initMinAirlinesNumberMutipartyConsensus: 4,
+        initMinSubmitionFund: web3.utils.toWei('1', "ether"),
+        newMinSubmitionFund: web3.utils.toWei('2', "ether"),
         weiMultiple: (new BigNumber(10)).pow(18),
         testAddresses: testAddresses,
         flightSuretyData: flightSuretyData,
-        flightSuretyApp: flightSuretyApp
+        flightSuretyApp: flightSuretyApp,
+        web3: web3,
+        TEST_ORACLES_COUNT: 20,
+        STATUS_CODE_UNKNOWN: 0,
+        STATUS_CODE_ON_TIME: 10,
+        STATUS_CODE_LATE_AIRLINE: 20,
+        STATUS_CODE_LATE_WEATHER:30,
+        STATUS_CODE_LATE_TECHNICAL: 40,
+        STATUS_CODE_LATE_OTHER: 50
+
+
     }
 }
 
