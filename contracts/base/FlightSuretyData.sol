@@ -356,7 +356,13 @@ contract FlightSuretyData is Ownable {
     *
     * Only contract addresses stored in the mapping variable are able to call the data contract
     */    
-    function authorizeContractCaller(address contractAddress) external onlyOwner() {
+    function authorizeContractCaller
+    (
+        address contractAddress
+    ) 
+        external 
+        onlyOwner()
+    {
         authorizedContracts[contractAddress] = 1;
         emit AuthorizeContractCaller(contractAddress);
     }

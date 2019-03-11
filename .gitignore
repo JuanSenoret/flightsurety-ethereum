@@ -47,6 +47,7 @@ truffle.js
 node_modules/
 jspm_packages/
 src/client/node_modules/
+src/server-hapi/node_modules/
 
 # Typescript v1 declaration files
 typings/

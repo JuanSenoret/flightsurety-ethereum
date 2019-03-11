@@ -12,7 +12,8 @@
     "test-oracles": "truffle test ./test/oracles.js",
     "dapp": "webpack-dev-server --mode development --config webpack.config.dapp.js",
     "dapp:prod": "webpack --mode production  --config webpack.config.dapp.js",
-    "dappReact": "cd src/client && npm start",
+    "dapp-react": "cd src/client-new && npm start",
+    "server-hapi-udacity": "cd src/server-hapi && npm start",
     "server": "rm -rf ./build/server && webpack --config webpack.config.server.js"
   },
   "author": "Juan Senoret <juansenoret@gmail.com>",

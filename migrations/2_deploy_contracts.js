@@ -18,6 +18,8 @@ module.exports = function(deployer) {
                     }
                     fs.writeFileSync(__dirname + '/../src/dapp/config.json',JSON.stringify(config, null, '\t'), 'utf-8');
                     fs.writeFileSync(__dirname + '/../src/server/config.json',JSON.stringify(config, null, '\t'), 'utf-8');
+                    fs.writeFileSync(__dirname + '/../src/client-new/config.json',JSON.stringify(config, null, '\t'), 'utf-8');
+                    fs.writeFileSync(__dirname + '/../src/server-hapi/src/config/config.json',JSON.stringify(config, null, '\t'), 'utf-8');
                 });
     });
 }
